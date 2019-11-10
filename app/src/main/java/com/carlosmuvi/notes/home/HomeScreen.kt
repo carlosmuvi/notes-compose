@@ -1,4 +1,4 @@
-package com.carlosmuvi.notes.home.presentation
+package com.carlosmuvi.notes.home
 
 import androidx.compose.Composable
 import com.carlosmuvi.notes.MainViewModel
@@ -8,6 +8,7 @@ import com.carlosmuvi.notes.views.ToolbarScreen
 
 @Composable
 fun HomeScreen(viewModel: MainViewModel) {
+    // TODO figure out when to call init.
     viewModel.onHomeRendered()
     ToolbarScreen(title = "Notes") {
         if (HomeState.loading) {

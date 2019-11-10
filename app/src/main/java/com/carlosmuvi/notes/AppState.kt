@@ -3,7 +3,7 @@ package com.carlosmuvi.notes
 import androidx.compose.Model
 
 @Model
-object State {
+object AppState {
     var currentScreen: Screen = Screen.Home
 }
 

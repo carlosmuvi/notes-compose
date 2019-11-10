@@ -1,7 +1,7 @@
-package com.carlosmuvi.notes.home.presentation
+package com.carlosmuvi.notes.home
 
 import androidx.compose.Model
-import com.carlosmuvi.notes.home.NoteDomainModel
+import com.carlosmuvi.notes.data.NoteDomainModel
 
 @Model
 object HomeState {

@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.carlosmuvi.notes.data.NotesRepository
 import com.carlosmuvi.notes.detail.DetailState
-import com.carlosmuvi.notes.home.NoteDomainModel
-import com.carlosmuvi.notes.home.presentation.HomeState
-import com.carlosmuvi.notes.home.presentation.toStateWithNotes
+import com.carlosmuvi.notes.data.NoteDomainModel
+import com.carlosmuvi.notes.home.HomeState
+import com.carlosmuvi.notes.home.toStateWithNotes
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -24,13 +24,13 @@ class MainViewModel(
 
     fun onNoteClick(note: NoteDomainModel) {
         DetailState.detail = note
-        State.currentScreen = Screen.Detail
+        AppState.currentScreen = Screen.Detail
     }
 
     fun onBackPressed() {
-        when (State.currentScreen) {
+        when (AppState.currentScreen) {
             Screen.Home -> Unit
-            Screen.Detail -> State.currentScreen = Screen.Home
+            Screen.Detail -> AppState.currentScreen = Screen.Home
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.carlosmuvi.notes.home
+package com.carlosmuvi.notes.data
 
 import java.util.*
 

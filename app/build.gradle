@@ -45,9 +45,11 @@ dependencies {
     implementation 'androidx.ui:ui-layout:0.1.0-dev02'
     implementation 'androidx.ui:ui-material:0.1.0-dev02'
     implementation 'androidx.ui:ui-tooling:0.1.0-dev02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc02'
 
     implementation("com.babylon.orbit:orbit:1.2.0")
     implementation("com.babylon.orbit:orbit-android:1.2.0")
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     testImplementation 'junit:junit:4.12'
 

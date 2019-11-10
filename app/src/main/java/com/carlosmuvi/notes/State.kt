@@ -3,7 +3,7 @@ package com.carlosmuvi.notes
 import androidx.compose.Model
 
 @Model
-object NotesState {
+object State {
     var currentScreen: Screen = Screen.Home
 }
 

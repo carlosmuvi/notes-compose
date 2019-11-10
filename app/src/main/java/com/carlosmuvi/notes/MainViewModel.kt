@@ -3,6 +3,8 @@ package com.carlosmuvi.notes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.carlosmuvi.notes.data.NotesRepository
+import com.carlosmuvi.notes.detail.DetailState
+import com.carlosmuvi.notes.home.NoteDomainModel
 import com.carlosmuvi.notes.home.presentation.HomeState
 import com.carlosmuvi.notes.home.presentation.toStateWithNotes
 import kotlinx.coroutines.launch
@@ -18,5 +20,10 @@ class MainViewModel(
                 HomeState.toStateWithNotes(repository.getNotes())
             }
         }
+    }
+
+    fun onNoteClick(note: NoteDomainModel) {
+        DetailState.detail = note
+        State.currentScreen = Screen.Detail
     }
 }

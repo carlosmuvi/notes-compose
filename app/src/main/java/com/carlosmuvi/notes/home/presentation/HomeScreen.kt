@@ -1,27 +1,24 @@
 package com.carlosmuvi.notes.home.presentation
 
 import androidx.compose.Composable
-import androidx.ui.layout.Column
-import androidx.ui.layout.LayoutSize
 import com.carlosmuvi.notes.MainViewModel
+import com.carlosmuvi.notes.home.ui.NoteRow
 import com.carlosmuvi.notes.views.LoadingView
-import com.carlosmuvi.notes.views.NoteRow
+import com.carlosmuvi.notes.views.ToolbarScreen
 
 @Composable
 fun HomeScreen(viewModel: MainViewModel) {
     viewModel.onHomeRendered()
-    if (HomeState.loading) {
-        LoadingView()
-    } else {
-        LoadedView()
-    }
-}
-
-@Composable
-private fun LoadedView() {
-    Column(crossAxisSize = LayoutSize.Expand) {
-        HomeState.notes.forEach {
-            NoteRow(name = it.title, date = it.date.toString())
+    ToolbarScreen(title = "Notes") {
+        if (HomeState.loading) {
+            LoadingView()
+        } else {
+            HomeState.notes.forEach { note ->
+                NoteRow(
+                    name = note.title,
+                    date = note.date.toString(),
+                    onClick = { viewModel.onNoteClick(note) })
+            }
         }
     }
 }

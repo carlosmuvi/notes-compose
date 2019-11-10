@@ -9,4 +9,5 @@ object State {
 
 sealed class Screen {
     object Home : Screen()
+    object Detail : Screen()
 }

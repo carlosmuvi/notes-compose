@@ -1,9 +1,10 @@
-package com.carlosmuvi.notes.views
+package com.carlosmuvi.notes.home.ui
 
 import androidx.compose.Composable
 import androidx.compose.unaryPlus
 import androidx.ui.core.Text
 import androidx.ui.core.dp
+import androidx.ui.foundation.Clickable
 import androidx.ui.layout.Column
 import androidx.ui.layout.HeightSpacer
 import androidx.ui.layout.LayoutSize
@@ -16,11 +17,14 @@ import androidx.ui.tooling.preview.Preview
 @Composable
 fun NoteRow(
     name: String,
-    date: String
-) {
+    date: String,
+    onClick: () -> Unit
+) = Clickable(onClick) {
     Card {
         Padding(padding = 16.dp) {
-            Column(crossAxisSize = LayoutSize.Expand) {
+            Column(
+                crossAxisSize = LayoutSize.Expand
+            ) {
                 Text(
                     text = name,
                     style = +themeTextStyle { h6 }
@@ -41,7 +45,8 @@ fun Preview() {
     MaterialTheme {
         NoteRow(
             name = "Hello Test!",
-            date = "10/10/1991"
+            date = "10/10/1991",
+            onClick = {}
         )
     }
 }

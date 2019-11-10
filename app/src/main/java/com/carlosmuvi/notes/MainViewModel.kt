@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val repository: NotesRepository = NotesRepository()
-    ) : ViewModel() {
+) : ViewModel() {
 
     fun onHomeRendered() {
         viewModelScope.launch {
@@ -25,5 +25,12 @@ class MainViewModel(
     fun onNoteClick(note: NoteDomainModel) {
         DetailState.detail = note
         State.currentScreen = Screen.Detail
+    }
+
+    fun onBackPressed() {
+        when (State.currentScreen) {
+            Screen.Home -> Unit
+            Screen.Detail -> State.currentScreen = Screen.Home
+        }
     }
 }

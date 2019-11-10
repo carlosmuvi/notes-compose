@@ -18,4 +18,8 @@ class MainActivity : AppCompatActivity() {
             App(viewModel)
         }
     }
+
+    override fun onBackPressed() {
+        viewModel.onBackPressed()
+    }
 }

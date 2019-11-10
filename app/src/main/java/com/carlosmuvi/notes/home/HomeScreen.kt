@@ -1,15 +1,14 @@
 package com.carlosmuvi.notes.home
 
 import androidx.compose.Composable
-import com.carlosmuvi.notes.MainViewModel
 import com.carlosmuvi.notes.home.ui.NoteRow
 import com.carlosmuvi.notes.views.LoadingView
 import com.carlosmuvi.notes.views.ToolbarScreen
 
 @Composable
-fun HomeScreen(viewModel: MainViewModel) {
-    // TODO figure out when to call init.
-    viewModel.onHomeRendered()
+fun HomeScreen(homeActionHandler: HomeActionHandler) {
+    // TODO figure out when to initialize.
+    homeActionHandler.init()
     ToolbarScreen(title = "Notes") {
         if (HomeState.loading) {
             LoadingView()
@@ -18,7 +17,7 @@ fun HomeScreen(viewModel: MainViewModel) {
                 NoteRow(
                     name = note.title,
                     date = note.date.toString(),
-                    onClick = { viewModel.onNoteClick(note) })
+                    onClick = { homeActionHandler.onNoteClick(note) })
             }
         }
     }

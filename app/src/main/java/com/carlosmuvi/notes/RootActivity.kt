@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.ui.core.setContent
 
-class MainActivity : AppCompatActivity() {
+class RootActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by lazy {
+    private val viewModel: RootViewModel by lazy {
         ViewModelProviders.of(this)
-                .get(MainViewModel::class.java)
+                .get(RootViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        viewModel.onBackPressed()
-    }
+    override fun onBackPressed() = viewModel.rootActionHandler.onBackPressed()
 }

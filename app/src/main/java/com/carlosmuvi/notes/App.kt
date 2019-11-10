@@ -6,11 +6,11 @@ import com.carlosmuvi.notes.detail.DetailScreen
 import com.carlosmuvi.notes.home.HomeScreen
 
 @Composable
-fun App(viewModel: MainViewModel) {
+fun App(viewModel: RootViewModel) {
     MaterialTheme {
         when(AppState.currentScreen) {
-            Screen.Home -> HomeScreen(viewModel)
-            Screen.Detail -> DetailScreen(viewModel)
+            Screen.Home -> HomeScreen(viewModel.homeActionHandler)
+            Screen.Detail -> DetailScreen(viewModel.detailActionHandler)
         }
     }
 }

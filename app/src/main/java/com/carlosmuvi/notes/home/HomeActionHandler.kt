@@ -1,19 +1,18 @@
-package com.carlosmuvi.notes
+package com.carlosmuvi.notes.home
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.carlosmuvi.notes.AppState
+import com.carlosmuvi.notes.Screen
+import com.carlosmuvi.notes.data.NoteDomainModel
 import com.carlosmuvi.notes.data.NotesRepository
 import com.carlosmuvi.notes.detail.DetailState
-import com.carlosmuvi.notes.data.NoteDomainModel
-import com.carlosmuvi.notes.home.HomeState
-import com.carlosmuvi.notes.home.toStateWithNotes
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class HomeActionHandler(
+    private val viewModelScope: CoroutineScope,
     private val repository: NotesRepository = NotesRepository()
-) : ViewModel() {
-
-    fun onHomeRendered() {
+) {
+    fun init() {
         viewModelScope.launch {
             if (HomeState.initialized.not()) {
                 HomeState.loading = true
@@ -25,12 +24,5 @@ class MainViewModel(
     fun onNoteClick(note: NoteDomainModel) {
         DetailState.detail = note
         AppState.currentScreen = Screen.Detail
-    }
-
-    fun onBackPressed() {
-        when (AppState.currentScreen) {
-            Screen.Home -> Unit
-            Screen.Detail -> AppState.currentScreen = Screen.Home
-        }
     }
 }
